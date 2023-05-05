@@ -1,3 +1,5 @@
+import { styled } from '@mui/material';
+
 export const ModalWindowStyles = {
   CardSX: {
     position: 'absolute' as 'absolute',
@@ -7,11 +9,14 @@ export const ModalWindowStyles = {
     maxWidth: '400px',
     width: '100%',
     bgcolor: 'background.paper',
-    p: 1,
+    px: 3,
     py: 4,
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
     flexDirection: 'column',
   },
+  StyledForm: styled('form')(() => ({
+    width: '100%',
+  })),
 };

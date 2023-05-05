@@ -1,4 +1,4 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { createSlice } from '@reduxjs/toolkit';
 
 import { IHOME_INITIAL_STATE } from './home.types';
 import { fetchWeatherData } from './home.thunk';

@@ -1,13 +1,25 @@
 import { FC } from 'react';
 import { Outlet } from 'react-router-dom';
+import { Box } from '@mui/material';
+
 import { Header } from '../Header';
-import { Stack } from '@mui/material';
 
 export const Layout: FC = () => {
   return (
-    <Stack spacing={3}>
+    <Box
+      sx={{
+        display: 'flex',
+        flexDirection: 'column',
+        minHeight: { lg: 1 },
+        height: '100%',
+        mb: 3,
+      }}
+    >
       <Header />
-      <Outlet />
-    </Stack>
+
+      <Box component="main" sx={{ height: '100%', flexGrow: 1, mt: 1 }}>
+        <Outlet />
+      </Box>
+    </Box>
   );
 };

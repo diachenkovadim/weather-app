@@ -7,13 +7,11 @@ import { homeReducer } from './HomeReducer';
 export const persistConfig = {
   key: 'root',
   storage,
-  whitelist: ['user'],
+  whitelist: ['home'],
 };
 
-// const combinedReducers = {
-//   user: {} as any,
-// };
+const combinedReducers = combineReducers({
+  home: homeReducer,
+});
 
-// const reducer = (state: any, action: any) => combineReducer(state, action);
-
-export const persistedReducer = persistReducer(persistConfig, homeReducer);
+export const persistedReducer = persistReducer(persistConfig, combinedReducers);

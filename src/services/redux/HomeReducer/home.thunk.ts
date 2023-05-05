@@ -12,11 +12,9 @@ export const fetchWeatherData = createAsyncThunk<IWeatherApiResponse, string>(
       const { data } = await apiServices.fetchData(
         GET_ENDPOINTS.fetchCityWeather,
         {
-          params: {
-            q: cityName,
-            appid: api_key,
-            units: 'metric',
-          },
+          q: cityName,
+          appid: api_key,
+          units: 'metric',
         }
       );
 

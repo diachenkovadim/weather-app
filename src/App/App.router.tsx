@@ -4,6 +4,7 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
 import { Home } from 'screens/Home';
 import { WeatherDetails } from 'screens/WeatherDetails';
+import { Page404 } from 'screens/Page404';
 
 import { SuspenseComponent } from 'components/SuspenseComponent';
 import { Layout } from 'components/Layout';
@@ -27,6 +28,15 @@ export const AppRpouter: FC = () => (
           element={
             <SuspenseComponent>
               <WeatherDetails />
+            </SuspenseComponent>
+          }
+        />
+
+        <Route
+          path={ROUTES.page404}
+          element={
+            <SuspenseComponent>
+              <Page404 />
             </SuspenseComponent>
           }
         />
