@@ -17,7 +17,7 @@ export const Layout: FC = () => {
     >
       <Header />
 
-      <Box component="main" sx={{ height: '100%', flexGrow: 1, mt: 1 }}>
+      <Box component="main" sx={{ height: '100%', flexGrow: 1, mt: 2 }}>
         <Outlet />
       </Box>
     </Box>

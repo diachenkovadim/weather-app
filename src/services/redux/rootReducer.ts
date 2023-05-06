@@ -2,16 +2,16 @@ import { combineReducers } from '@reduxjs/toolkit';
 import { persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 
-import { homeReducer } from './HomeReducer';
+import { weatherReducer } from './weatherReducer';
 
 export const persistConfig = {
   key: 'root',
   storage,
-  whitelist: ['home'],
+  whitelist: ['weather'],
 };
 
 const combinedReducers = combineReducers({
-  home: homeReducer,
+  weather: weatherReducer,
 });
 
 export const persistedReducer = persistReducer(persistConfig, combinedReducers);

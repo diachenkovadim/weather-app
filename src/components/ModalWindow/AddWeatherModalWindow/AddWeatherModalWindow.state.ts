@@ -5,7 +5,7 @@ import { useAppDispatch } from 'hooks/useRedux';
 import { cityNameValidationSchema } from 'services/validation';
 
 import { defaultFormValues } from './AddWeatherModalWindow.contants';
-import { fetchWeatherData } from '../../../services/redux/HomeReducer';
+import { fetchWeatherData } from '../../../services/redux/weatherReducer';
 
 interface IuseAddWeatherModalWindowStateProps {
   onToggleModalWindow: () => void;

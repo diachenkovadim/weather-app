@@ -1,0 +1,11 @@
+.tooltipWrapper {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+}
+.rowWrapper {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  padding-bottom: 3px;
+}

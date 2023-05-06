@@ -1,12 +1,7 @@
-import { useAppDispatch, useAppSelector } from 'hooks/useRedux';
+import { useAppSelector } from 'hooks/useRedux';
 
 export const useHomeState = () => {
-  const dispath = useAppDispatch();
-
-  const onDeleteWeatherCardHandler = (
-    event: React.MouseEvent<HTMLInputElement>
-  ) => {};
-  const { weatherData } = useAppSelector((state) => state.home);
+  const { weatherData } = useAppSelector((state) => state.weather);
 
   return { weatherData };
 };

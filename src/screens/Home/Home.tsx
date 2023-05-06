@@ -10,10 +10,11 @@ const Home: FC = () => {
   return (
     <Container>
       <Grid container spacing={2}>
-        {weatherData.map((weather, index) => (
+        {weatherData.map((weather) => (
           <Grid item key={weather.id} xs={12} md={6} lg={4}>
             <WeatherCard
               key={weather.id}
+              cardId={weather.id}
               cityName={weather.name}
               currentTemperature={weather.main.temp}
               minTemperature={weather.main.temp_min}
