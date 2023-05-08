@@ -1,4 +1,4 @@
-### Application to help user find city and check the weater
+# Application to help user find the city and check the weater
 
 # Getting Started with Create React App
 
