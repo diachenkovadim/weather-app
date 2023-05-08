@@ -1,5 +1,5 @@
 import { FC, useEffect } from 'react';
-import { Button, Container, Grid } from '@mui/material';
+import { Button, Grid } from '@mui/material';
 import { Link as RouterLink } from 'react-router-dom';
 
 import { WeatherCardDetails } from 'components/WeatherCardDetails';
