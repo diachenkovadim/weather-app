@@ -12,8 +12,8 @@ export const EmptyScreen: FC = () => {
       width={1}
     >
       <Typography variant="h6" textAlign="center">
-        You do not have any weather cards. Please use the Add Weather Card
-        button on top to add weather card.
+        You do not have any weather cards. Please use the search at the top to
+        find city
       </Typography>
     </Stack>
   );
