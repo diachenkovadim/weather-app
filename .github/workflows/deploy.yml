@@ -6,14 +6,11 @@ on:
       - master
 
 jobs:
-  build:
-
+  deploy:
     runs-on: ubuntu-latest
-
     steps:
-    
     - name: Checkout
-      uses: actions/checkout@v1
+      uses: actions/checkout@v2
 
     - name: Build
       run: |
@@ -25,8 +22,9 @@ jobs:
         REACT_APP_BASE_GEO_API_URL: ${{ secrets.REACT_APP_BASE_GEO_API_URL }}
 
     - name: Deploy
-      uses: JamesIves/github-pages-deploy-action@releases/v3
+      uses: JamesIves/github-pages-deploy-action@4.1.1
       with:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+        BASE_BRANCH: master
         BRANCH: gh-pages
         FOLDER: build
