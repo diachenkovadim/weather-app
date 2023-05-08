@@ -92,10 +92,9 @@ export interface IWeatherApiResponse {
 export interface IHOME_INITIAL_STATE {
   weatherData: IWeatherApiResponse[];
   selectedWeatherData: IWeatherApiResponse;
-
   dailyForecastData: IDayliForecastApiResponse;
-
   isLoading: boolean;
+  isFetchDailyForecast: boolean;
   isError: boolean;
   errorMessage: string;
 }

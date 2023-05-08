@@ -9,12 +9,6 @@ export type ColorSchema =
   | 'error';
 
 declare module '@mui/material/styles/createPalette' {
-  interface Palette {
-    custom: {
-      main: string;
-    };
-  }
-
   interface TypeBackground {
     neutral: string;
   }

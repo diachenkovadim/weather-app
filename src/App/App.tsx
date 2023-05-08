@@ -5,12 +5,19 @@ import { store, persistedStore } from 'services/redux/store';
 
 import { AppRpouter } from './App.router';
 import { ThemeProvider } from '../styles/theme';
+import { SnackbarProvider } from 'notistack';
 
 const App = () => (
   <ThemeProvider>
     <Provider store={store}>
       <PersistGate loading={null} persistor={persistedStore}>
-        <AppRpouter />
+        <SnackbarProvider
+          preventDuplicate
+          autoHideDuration={5000}
+          anchorOrigin={{ horizontal: 'right', vertical: 'top' }}
+        >
+          <AppRpouter />
+        </SnackbarProvider>
       </PersistGate>
     </Provider>
   </ThemeProvider>

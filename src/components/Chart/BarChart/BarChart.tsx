@@ -13,25 +13,15 @@ export const BarChart: FC<IBarChartProps> = ({ chart }) => {
   const defaultConfigOptions = getDefaultChartOptions({
     categories,
     options,
+    colors,
     theme,
   });
   return (
     <ReactApexChart
       type="bar"
       series={[{ data: series }]}
-      // options={{
-      //   xaxis: {
-      //     categories: [
-      //       '2023-05-06 09:00:00',
-      //       '2023-05-06 12:00:00',
-      //       '2023-05-06 15:00:00',
-      //       '2023-05-06 18:00:00',
-      //       '2023-05-06 21:00:00',
-      //     ],
-      //   },
-      // }}
       options={defaultConfigOptions}
-      width={'100%'}
+      width="100%"
       height={300}
     />
   );

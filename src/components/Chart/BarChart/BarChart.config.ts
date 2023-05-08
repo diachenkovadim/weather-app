@@ -9,12 +9,13 @@ interface IgetDefaultChartOptionsProps {
   options?: ApexOptions;
   categories: TCategories;
   theme: Theme;
+  colors: string[];
 }
 
 export const getDefaultChartOptions = (
   props: IgetDefaultChartOptionsProps
 ): ApexOptions => {
-  const { categories, options, theme } = props;
+  const { categories, options, colors, theme } = props;
 
   return {
     stroke: { show: false },
@@ -49,7 +50,7 @@ export const getDefaultChartOptions = (
         columnWidth: '70%',
       },
     },
-
+    colors,
     yaxis: {
       labels: {
         formatter: (val) => `${val.toString()} °C`,
@@ -62,37 +63,35 @@ export const getDefaultChartOptions = (
       tickPlacement: 'on',
       categories,
     },
-    // tooltip: {
-    //   custom: (options) => {
-    //     console.log(options);
-
-    //     return `
-    //     <div class="tooltipWrapper">
-    //       <div>Max temp: ${10}°C</div>
-    //       <div>Min temp: ${11}°C</div>
-    //     </div>`;
-    //   },
-    // },
-
     ...options,
-    //change styles on breakpoints
-    // responsive: [
-    //   {
-    //     breakpoint: theme.breakpoints.values.sm,
-    //     options: {
-    //       plotOptions: { bar: { columnWidth: '70%' } },
-    //       chart: {
-    //         width: 220,
-    //         height: 160,
-    //       },
-    //     },
-    //   },
-    //   {
-    //     breakpoint: theme.breakpoints.values.md,
-    //     options: {
-    //       plotOptions: { bar: { columnWidth: '70%' } },
-    //     },
-    //   },
-    // ],
+    responsive: [
+      {
+        breakpoint: theme.breakpoints.values.sm,
+        options: {
+          dataLabels: {
+            enabled: false,
+          },
+          tooltip: {
+            fixed: {
+              enabled: true,
+              position: 'top',
+            },
+          },
+        },
+      },
+      {
+        breakpoint: theme.breakpoints.values.md,
+        options: {
+          dataLabels: {
+            enabled: true,
+          },
+          tooltip: {
+            fixed: {
+              enabled: false,
+            },
+          },
+        },
+      },
+    ],
   };
 };

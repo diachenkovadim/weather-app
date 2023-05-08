@@ -46,12 +46,12 @@ export const getColorCondtions = (theme: Theme) => [
   {
     from: 11,
     to: 20,
-    color: theme.palette.primary.main,
+    color: theme.palette.warning.main,
   },
   {
     from: 21,
     to: 100,
-    color: theme.palette.warning.main,
+    color: theme.palette.primary.main,
   },
   {
     from: -10,

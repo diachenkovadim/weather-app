@@ -11,7 +11,6 @@ import {
 import { customShadows } from './customShadows';
 import { GlobalStyles } from './globalStyles';
 import { palette } from './palette';
-import { shadows } from './shadows';
 import { typography } from './typography';
 
 type TProps = {
@@ -24,7 +23,6 @@ export const ThemeProvider = ({ children }: TProps) => {
       palette: palette(),
       typography,
       shape: { borderRadius: 8 },
-      shadows: shadows(),
       customShadows: customShadows(),
     }),
     []

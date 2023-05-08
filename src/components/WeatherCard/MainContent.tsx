@@ -24,7 +24,7 @@ export const MainContent: FC<IMainContentProps> = (props) => {
       spacing={1}
       justifyContent="space-between"
     >
-      <Stack spacing={1} width={{ xs: 1, sm: '40%' }}>
+      <Stack spacing={1}>
         <Stack direction="row" spacing={1} justifyContent="space-between">
           <Typography variant="body2">Date:</Typography>
           <Typography variant="subtitle2">{date}</Typography>

@@ -1,6 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
-import { apiServices, GET_ENDPOINTS } from '../../apiService';
+import { GET_ENDPOINTS, apiServices } from '../../apiService';
 import {
   IDayliForecastApiResponse,
   IWeatherApiResponse,
@@ -12,26 +12,25 @@ export const baseAPIconfig = {
   units: 'metric',
 };
 
-export const fetchWeatherData = createAsyncThunk<IWeatherApiResponse, string>(
-  'weather/fetchWeatherData',
-  async (cityName) => {
-    try {
-      const { data } = await apiServices.fetchData(
-        GET_ENDPOINTS.fetchCityWeather,
-        {
-          q: cityName,
-          ...baseAPIconfig,
-        }
-      );
+export const fetchWeatherData = createAsyncThunk<
+  IWeatherApiResponse,
+  { lat: number; lon: number }
+>('weather/fetchWeatherData', async ({ lat, lon }) => {
+  try {
+    const { data } = await apiServices.fetchData(
+      GET_ENDPOINTS.fetchCityWeather,
+      {
+        lat,
+        lon,
+        ...baseAPIconfig,
+      }
+    );
 
-      console.log(data);
-
-      return data;
-    } catch (error) {
-      console.log();
-    }
+    return data;
+  } catch (error) {
+    console.log();
   }
-);
+});
 
 export const fetchDailyForecastData = createAsyncThunk<
   IDayliForecastApiResponse,
@@ -43,7 +42,6 @@ export const fetchDailyForecastData = createAsyncThunk<
       ...baseAPIconfig,
     });
 
-    console.log(data);
     return data;
   } catch (error) {
     console.log();

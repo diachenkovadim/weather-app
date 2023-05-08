@@ -1,5 +1,5 @@
 import { FC } from 'react';
-import { Box, CardContent, Stack, Typography } from '@mui/material';
+import { CardContent, Stack, Typography } from '@mui/material';
 import RefreshRoundedIcon from '@mui/icons-material/RefreshRounded';
 import DeleteForeverRoundedIcon from '@mui/icons-material/DeleteForeverRounded';
 
@@ -9,6 +9,7 @@ import { MainContent } from './MainContent';
 import { IWeatherCardProps } from './weatherCard.types';
 import { useWeatherCardState } from './WeatherCard.state';
 import { WeatherCardSkeleton } from '../Skeleton';
+import { WeatherCardStyles as Styled } from './WeatherCard.styles';
 
 export const WeatherCard: FC<IWeatherCardProps> = (props) => {
   const {
@@ -21,16 +22,16 @@ export const WeatherCard: FC<IWeatherCardProps> = (props) => {
     minTemperature,
     weatherDescription,
     cardId,
+    lat,
+    lon,
   } = props;
 
   const {
-    isError,
     isLoading,
-    tt,
     onCardClickHandler,
     onDeleteWeatherCardHandler,
     onRefreshWeatherCardDataHandler,
-  } = useWeatherCardState({ cityName, cardId });
+  } = useWeatherCardState({ lat, lon, cardId });
   return (
     <StyledCard
       sx={{
@@ -38,6 +39,7 @@ export const WeatherCard: FC<IWeatherCardProps> = (props) => {
           `linear-gradient(to right, ${theme.palette.success.lighter}, ${theme.palette.success.light})`,
       }}
       onClick={onCardClickHandler}
+      data-testid="weather-card"
     >
       <CardContent>
         {isLoading ? (
@@ -49,20 +51,19 @@ export const WeatherCard: FC<IWeatherCardProps> = (props) => {
                 {cityName}, {country}
               </Typography>
               <Stack direction="row" spacing={1} alignItems="center">
-                <Box
+                <Styled.StyledBox
                   component="span"
-                  display="flex"
+                  data-testid="refresh-button"
                   onClick={onRefreshWeatherCardDataHandler}
                 >
                   <RefreshRoundedIcon />
-                </Box>
-                <Box
-                  component="span"
-                  display="flex"
+                </Styled.StyledBox>
+                <Styled.StyledBox
+                  data-testid="remove-button"
                   onClick={onDeleteWeatherCardHandler}
                 >
                   <DeleteForeverRoundedIcon />
-                </Box>
+                </Styled.StyledBox>
               </Stack>
             </Stack>
 

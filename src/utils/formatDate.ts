@@ -1,6 +1,6 @@
 import { format } from 'date-fns';
 
-import { DATE_FORMATS } from 'constants/config';
+import { DATE_FORMATS } from 'constants/global';
 
 type TInputValue = Date | string | number | null;
 

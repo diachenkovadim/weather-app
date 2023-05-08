@@ -8,13 +8,14 @@ import {
 import { fetchDailyForecastData, fetchWeatherData } from './weather.thunk';
 import { isToday } from 'date-fns';
 
-const initialState: IHOME_INITIAL_STATE = {
+export const initialState: IHOME_INITIAL_STATE = {
   weatherData: [],
   selectedWeatherData: {} as IWeatherApiResponse,
   dailyForecastData: {} as IDayliForecastApiResponse,
   isLoading: false,
   isError: false,
   errorMessage: '',
+  isFetchDailyForecast: false,
 };
 
 export const weatherSlice = createSlice({
@@ -40,6 +41,10 @@ export const weatherSlice = createSlice({
         (weather) => weather.id !== action.payload
       );
     },
+    removeError: (state: IHOME_INITIAL_STATE) => {
+      state.isError = false;
+      state.errorMessage = '';
+    },
   },
   extraReducers: (builder) => {
     builder
@@ -53,7 +58,7 @@ export const weatherSlice = createSlice({
         );
         existingIndex !== -1
           ? (state.weatherData[existingIndex] = action.payload)
-          : state.weatherData.push(action.payload);
+          : state.weatherData.unshift(action.payload);
       })
       .addCase(fetchWeatherData.rejected, (state, action) => {
         state.isLoading = false;
@@ -61,16 +66,26 @@ export const weatherSlice = createSlice({
         state.errorMessage =
           action.error.message || 'Failed to fetch weather data';
       })
+      .addCase(fetchDailyForecastData.pending, (state) => {
+        state.isFetchDailyForecast = true;
+      })
       .addCase(fetchDailyForecastData.fulfilled, (state, action) => {
         const todayListData = action.payload.list.filter((item) => {
           return isToday(new Date(item.dt_txt));
         });
-
         state.dailyForecastData = { ...action.payload, list: todayListData };
+        state.isFetchDailyForecast = false;
+      })
+      .addCase(fetchDailyForecastData.rejected, (state, action) => {
+        state.isFetchDailyForecast = false;
+        state.isError = true;
+        state.errorMessage =
+          action.error.message || 'Failed to fetch daily forecast data';
       });
   },
 });
 
-export const { removeWeatherCard, selectWeatherCard } = weatherSlice.actions;
+export const { removeWeatherCard, selectWeatherCard, removeError } =
+  weatherSlice.actions;
 
 export const weatherReducer = weatherSlice.reducer;

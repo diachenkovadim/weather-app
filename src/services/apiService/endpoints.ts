@@ -1,4 +1,5 @@
 export const GET_ENDPOINTS = {
   fetchCityWeather: '/weather',
-  forecast: '/forecast'
+  forecast: '/forecast',
+  fetchGeoDataByCityName: 'direct',
 } as const;

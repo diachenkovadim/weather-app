@@ -8,10 +8,15 @@ export interface IWeatherCardProps {
   timeStamp: number;
   weatherDescription: string;
   cardId: number;
+  lat: number;
+  lon: number;
 }
 
 export interface IMainContentProps
-  extends Omit<IWeatherCardProps, 'cityName' | 'country' | 'cardId'> {}
+  extends Omit<
+    IWeatherCardProps,
+    'cityName' | 'lat' | 'lon' | 'country' | 'cardId'
+  > {}
 
 export interface IuseWeatherCardStateProps
-  extends Pick<IWeatherCardProps, 'cityName' | 'cardId'> {}
+  extends Pick<IWeatherCardProps, 'lat' | 'lon' | 'cardId'> {}
