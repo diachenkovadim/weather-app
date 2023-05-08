@@ -1,30 +1,31 @@
-name: Deploy
+name: Github Pages Deploy
 
 on:
   push:
     branches:
-      - master
+      - "master"
 
 jobs:
-  deploy:
+  build:
     runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [15.x]
+    
     steps:
-    - name: Checkout
-      uses: actions/checkout@v2
+      - name: Checkout
+        uses: actions/checkout@v1
 
-    - name: Build
-      run: |
-        npm install
-        npm run build
-      env:
-        REACT_APP_OPEN_WEATHER_API_KEY: ${{ secrets.REACT_APP_OPEN_WEATHER_API_KEY }}
-        REACT_APP_BASE_API_URL: ${{ secrets.REACT_APP_BASE_API_URL }}
-        REACT_APP_BASE_GEO_API_URL: ${{ secrets.REACT_APP_BASE_GEO_API_URL }}
-
-    - name: Deploy
-      uses: JamesIves/github-pages-deploy-action@4.1.1
-      with:
-        ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
-        BASE_BRANCH: master
-        BRANCH: gh-pages
-        FOLDER: build
+      - name: Install and build
+        run: npm install && npm run build
+         env:
+           REACT_APP_OPEN_WEATHER_API_KEY: ${{ secrets.REACT_APP_OPEN_WEATHER_API_KEY }}
+           REACT_APP_BASE_API_URL: ${{ secrets.REACT_APP_BASE_API_URL }}
+           REACT_APP_BASE_GEO_API_URL: ${{ secrets.REACT_APP_BASE_GEO_API_URL }}
+      
+      - name: Deploy
+        uses: JamesIves/github-pages-deploy-action@4.1.1
+        with:
+          branch: gh-pages # The branch the action should deploy to.
+          folder: build # The folder the action should deploy.        

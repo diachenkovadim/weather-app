@@ -13,7 +13,7 @@ export const EmptyScreen: FC = () => {
     >
       <Typography variant="h6" textAlign="center">
         You do not have any weather cards. Please use the search at the top to
-        find city
+        find the city
       </Typography>
     </Stack>
   );
