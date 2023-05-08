@@ -1,6 +1,6 @@
 import { FC } from 'react';
 
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { HashRouter, Route, Routes } from 'react-router-dom';
 
 import { Home } from 'screens/Home';
 import { WeatherDetails } from 'screens/WeatherDetails';
@@ -12,7 +12,7 @@ import { Layout } from 'components/Layout';
 import { ROUTES } from 'constants/routes';
 
 export const AppRpouter: FC = () => (
-  <BrowserRouter>
+  <HashRouter>
     <Routes>
       <Route path={ROUTES.home} element={<Layout />}>
         <Route
@@ -31,7 +31,6 @@ export const AppRpouter: FC = () => (
             </SuspenseComponent>
           }
         />
-
         <Route
           path={ROUTES.page404}
           element={
@@ -42,5 +41,5 @@ export const AppRpouter: FC = () => (
         />
       </Route>
     </Routes>
-  </BrowserRouter>
+  </HashRouter>
 );
