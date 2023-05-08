@@ -33,14 +33,7 @@ export const WeatherCard: FC<IWeatherCardProps> = (props) => {
     onRefreshWeatherCardDataHandler,
   } = useWeatherCardState({ lat, lon, cardId });
   return (
-    <StyledCard
-      sx={{
-        background: (theme) =>
-          `linear-gradient(to right, ${theme.palette.success.lighter}, ${theme.palette.success.light})`,
-      }}
-      onClick={onCardClickHandler}
-      data-testid="weather-card"
-    >
+    <StyledCard onClick={onCardClickHandler} data-testid="weather-card">
       <CardContent>
         {isLoading ? (
           <WeatherCardSkeleton />

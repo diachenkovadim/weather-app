@@ -7,6 +7,7 @@ import { useAppDispatch, useAppSelector } from 'hooks/useRedux';
 import useDebounce from 'hooks/useDebounce';
 
 import { ROUTES } from 'constants/routes';
+
 import { useSnackbar } from 'notistack';
 
 interface IGeoAPIresponse {

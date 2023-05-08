@@ -29,12 +29,7 @@ export const WeatherCardDetails: FC<IWeatherCardDetailsProps> = (props) => {
   } = props;
 
   return (
-    <StyledCard
-      sx={{
-        background: (theme) =>
-          `linear-gradient(to bottom, ${theme.palette.success.lighter}, ${theme.palette.success.light})`,
-      }}
-    >
+    <StyledCard direction="bottom">
       <CardContent>
         <Stack spacing={2}>
           <Stack direction="row" spacing={1} justifyContent="space-between">
